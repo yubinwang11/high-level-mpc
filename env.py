@@ -191,6 +191,7 @@ class Env(object):
         # run  model predictive control
         _act, pred_traj = self.high_mpc.solve(ref_traj)
         control = get_control_input(acceleration=float(_act[0]), steer_angle=float(_act[1]))
+        print(control)
         self.vehicle.apply_control(control)
         self.vehicle_state = get_state_frenet(self.vehicle, self.map)
         
@@ -211,6 +212,7 @@ class Env(object):
         elif self.t >= (self.sim_T-self.sim_dt):
             done = True
 
+        print(self.vehicle_state[3])
         # get the reward
 
         if done:

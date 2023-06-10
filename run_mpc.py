@@ -15,6 +15,8 @@ def main():
         # Retrieve the world that is currently running
         world = client.load_world('Town05')
 
+        #client.start_recorder("/home/yubinwang/carla_saved/recording01.log", True)
+        client.start_recorder("/home/yubinwang/carla_saved/recording01.mp4", True)
         origin_settings = world.get_settings()
 
         # set sync mode
@@ -42,6 +44,8 @@ def main():
         env.vehicle.destroy()
         for agent in env.moving_agents:
             agent.destroy()
+        
+        client.stop_recorder()
 
 
 if __name__ == '__main__':
